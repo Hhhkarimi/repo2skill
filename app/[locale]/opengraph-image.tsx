@@ -1,0 +1,4 @@
+import { ImageResponse } from 'next/og';
+export const alt='Repo2Skill — GitHub repository to professional AI Skill';
+export const size={width:1200,height:630}; export const contentType='image/png';
+export default function Image(){return new ImageResponse(<div style={{width:'100%',height:'100%',display:'flex',flexDirection:'column',justifyContent:'center',padding:'70px',background:'#07070b',color:'white',fontFamily:'sans-serif'}}><div style={{fontSize:28,color:'#c6ff46'}}>GITHUB → AGENT SKILL</div><div style={{fontSize:84,fontWeight:800,letterSpacing:-4,marginTop:22}}>Repo2Skill</div><div style={{fontSize:38,color:'#b3afc1',marginTop:12}}>Turn repository evidence into engineering expertise.</div><div style={{display:'flex',gap:16,marginTop:48,fontSize:24}}><span style={{padding:'12px 20px',border:'1px solid #8b5cf6',borderRadius:999}}>ChatGPT</span><span style={{padding:'12px 20px',border:'1px solid #22d3ee',borderRadius:999}}>Claude</span></div></div>,size);}

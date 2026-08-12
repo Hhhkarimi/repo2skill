@@ -1,0 +1,37 @@
+{
+  "name": "repo2skill",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Turn a public GitHub repository into professional ChatGPT and Claude Agent Skills without paid AI APIs.",
+  "license": "MIT",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "check": "npm run typecheck && npm run lint && npm run smoke && npm run build",
+    "smoke": "node scripts/smoke.cjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/cairo": "5.3.0",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@fontsource-variable/noto-sans-sc": "5.3.0",
+    "@fontsource-variable/vazirmatn": "5.3.0",
+    "jszip": "3.10.1",
+    "next": "16.3.0",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.0.0",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "eslint": "9.0.0",
+    "eslint-config-next": "16.3.0",
+    "typescript": "5.9.2"
+  }
+}
