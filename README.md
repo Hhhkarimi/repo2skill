@@ -1,57 +1,98 @@
-# Repo2Skill
+<div align="center">
+
+<img src="assets/readme/repo2skill-hero-en.png" alt="Repo2Skill" width="100%" />
+
+<br />
+
+**Turn any public GitHub repository into professional, repository-native Agent Skills for ChatGPT and Claude — without paid AI APIs.**
+
+<br />
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-repo2skill.vercel.app-ff34b4?style=for-the-badge)](https://repo2skill.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-7e4eff?style=for-the-badge)](LICENSE)
+[![No Paid AI API](https://img.shields.io/badge/AI_API-Not_Required-c1ff2e?style=for-the-badge)](https://repo2skill.vercel.app)
 
 **English** · [فارسی](README.fa.md) · [العربية](README.ar.md) · [中文](README.zh.md) · [Français](README.fr.md) · [Español](README.es.md) · [Italiano](README.it.md)
 
-Turn a public GitHub repository into two professional, repository-native Agent Skills: one for ChatGPT and one for Claude — without paid AI APIs.
+</div>
 
-## What makes Repo2Skill different
+## See it in action
 
-Repo2Skill does not simply summarize a README. It deterministically maps repository evidence and compiles an engineering operating system for the codebase:
+<div align="center">
+  <img src="assets/readme/repo2skill-demo-en.gif" alt="Repo2Skill demo" width="92%" />
+</div>
 
-- repository shape: monorepo, library/SDK, web app, service/API, CLI or general software repository;
-- primary language, frameworks, package/build ecosystems and dependency graph signals;
-- real project scripts and Make targets;
-- exported/public code symbols and high-signal entrypoints;
-- API route/handler patterns across common stacks;
-- tests, GitHub Actions CI, Docker, migrations and environment-variable names;
-- repository conventions and risk signals;
-- bounded source excerpts and a file index for progressive disclosure;
-- task playbooks for **Implement, Debug, Review, Test, Explain, Refactor and Migrate**;
-- source-of-truth rules and an explicit untrusted-source boundary.
+## Why Repo2Skill
 
-## Outputs
+- **Repository-native** — built from real source, manifests, tests, CI, routes, exports, and config.
+- **Engineering modes** — Implement, Debug, Review, Test, Explain, Refactor, and Migrate.
+- **Progressive disclosure** — focused evidence packs instead of one giant source dump.
+- **Built-in evals** — task evals, activation queries, rubric, and hard-fail conditions.
+- **Evidence discipline** — observed facts, inferences, and assumptions stay distinct.
+- **Validation honesty** — unexecuted checks can never be reported as passed.
+- **Security-aware** — repository text is untrusted evidence, never higher-level instruction.
+- **Zero paid AI APIs** — public repo analysis and Skill ZIP generation are browser-first.
 
-Each analyzed repository can export two ZIP files:
+## How it works
+
+Repo2Skill analyzes repository metadata, file structure, selected high-signal source files, manifests, tests, CI, interfaces, and commands. It then compiles a compact orchestration layer plus focused references and evals.
 
 ```text
-my-repo-repository-engineer-chatgpt/
-├── SKILL.md
-└── references/
-    ├── repository-profile.md
-    ├── architecture.md
-    ├── workflows.md
-    ├── commands.md
-    ├── code-map.md
-    ├── interfaces.md
-    ├── dependencies.md
-    ├── testing-and-ci.md
-    ├── config-security.md
-    ├── source-excerpts.md
-    ├── file-index.md
-    └── provenance.md
+GitHub repository
+       ↓
+Repository intelligence
+       ↓
+Architecture + interfaces + commands + tests + CI
+       ↓
+Bounded evidence packs
+       ↓
+Engineering playbooks + decision policy + evals
+       ↓
+ChatGPT Skill.zip  +  Claude Skill.zip
 ```
 
-Claude receives the same evidence library with a Claude-optimized `SKILL.md` designed around progressive disclosure.
+## Professional Skill output
 
-## Zero paid-AI-API architecture
+```text
+my-repo-repository-engineer/
+├── SKILL.md
+├── references/
+│   ├── repository-profile.md
+│   ├── architecture.md
+│   ├── workflows.md
+│   ├── commands.md
+│   ├── code-map.md
+│   ├── interfaces.md
+│   ├── dependencies.md
+│   ├── testing-and-ci.md
+│   ├── config-security.md
+│   ├── decision-policy.md
+│   ├── implementation-playbook.md
+│   ├── debugging-playbook.md
+│   ├── review-playbook.md
+│   ├── refactor-migration-playbook.md
+│   ├── evidence-index.md
+│   ├── evidence-*.md
+│   ├── file-index.md
+│   └── provenance.md
+└── evals/
+    ├── evals.json
+    ├── trigger-queries.json
+    ├── rubric.md
+    └── README.md
+```
 
-Repo2Skill is browser-first. The browser calls GitHub's public REST API for repository metadata/tree/languages and fetches selected public raw files from `raw.githubusercontent.com`. Analysis and ZIP generation happen in the browser.
+## Skill quality & evals
 
-No OpenAI API key, Anthropic API key, database, vector database or paid analysis service is required. GitHub's own public API limits still apply.
+Generated Skills include task evals, positive/negative activation queries, an evaluation rubric, and hard-fail conditions for hallucinated commands, false validation claims, unsafe secret handling, destructive operations, and breaking migrations.
+
+## Browser-first architecture
+
+Public GitHub metadata and selected raw files are fetched from the browser. Analysis and ZIP generation are client-side. No OpenAI API key, Anthropic API key, vector database, embedding service, or paid analysis API is required.
 
 ## Supported UI languages
 
-English is the default. The app also ships with Persian, Arabic, Simplified Chinese, French, Spanish and Italian. Persian and Arabic use real RTL layouts. Locale-aware self-hosted fonts are bundled at build time: Manrope, Vazirmatn, Cairo and Noto Sans SC.
+English is the default UI language. Repo2Skill also includes فارسی, العربية, 中文, Français, Español and Italiano. Persian and Arabic layouts are RTL in the web app.
 
 ## Run locally
 
@@ -60,9 +101,11 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`. The root redirects to `/en`.
+```text
+http://localhost:3000
+```
 
-Production verification:
+Full verification:
 
 ```bash
 npm run check
@@ -70,31 +113,26 @@ npm run check
 
 ## Deploy to Vercel
 
-Import the GitHub repository in Vercel and deploy as a Next.js project. No environment variable is required. Optionally set:
+Import the repository as a Next.js project in Vercel. No environment variable is required.
+
+Optional:
 
 ```bash
 NEXT_PUBLIC_SITE_URL=https://your-domain.example
 ```
 
-for canonical URLs, Open Graph metadata and sitemap generation.
-
 ## Security model
 
-- Only `github.com` repository identifiers are accepted by the URL parser.
-- Repository fetching is browser-side; there is no general-purpose server fetch endpoint.
-- CSP restricts network connections to GitHub API/raw content plus the application origin.
-- Repository text is treated as untrusted evidence and cannot override platform, workspace, user or Skill instructions.
-- Secret values are not requested or bundled. Only detected environment-variable **names** can appear in the Skill.
-- Generated Skills tell the model to inspect commands before destructive deploy/release/migration actions and to never claim unexecuted checks passed.
-
-## SEO / GEO foundations
-
-Localized metadata, canonical URLs, `hreflang`, sitemap, robots, structured data and `llms.txt` are included without exposing implementation-focused marketing cards in the main user flow.
+Repository content is treated as untrusted evidence. Generated Skills separate observed facts from inference, avoid secret values, and require explicit verification before destructive release, deploy, reset, or migration operations.
 
 ## Scope
 
-Version 1.0 analyzes **public GitHub repositories**. Private repository OAuth/token support is intentionally not included in the zero-secret MVP.
+Repo2Skill currently focuses on public GitHub repositories. Private-repository OAuth/token support is intentionally outside the zero-secret MVP.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-MIT.
+[MIT](LICENSE)
